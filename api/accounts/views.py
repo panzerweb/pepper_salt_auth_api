@@ -17,7 +17,10 @@ class RegisterView(GenericAPIView):
 
         register_user(**serializer.validated_data)
 
-        return Response({"message": "User registered"}, status=201)
+        return Response({
+            "message": "Registered successfully",
+            "status": status.HTTP_201_CREATED
+        }, status=status.HTTP_201_CREATED)
 
 class LoginView(GenericAPIView):
     serializer_class = LoginSerializer
@@ -29,7 +32,7 @@ class LoginView(GenericAPIView):
         user = login_user(**serializer.validated_data)
 
         if not user:
-            return Response({"error": "Invalid credentials"}, status=401)
+            return Response({"error": "Invalid credentials", "status":status.HTTP_401_UNAUTHORIZED}, status=401)
 
         return Response({
             "message": "Login successful",
