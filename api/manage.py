@@ -18,7 +18,7 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
-    print("PEPPER:", settings.PEPPER)
+    print("PEPPER:", settings.PEPPERS[settings.LATEST_PEPPER_VERSION])
 
 
 if __name__ == '__main__':
