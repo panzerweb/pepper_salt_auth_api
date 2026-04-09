@@ -7,7 +7,6 @@ from rest_framework import status
 from .serializers import RegisterSerializer, LoginSerializer
 from .services import register_user, login_user
 
-# Create your views here.
 class RegisterView(GenericAPIView):
     serializer_class = RegisterSerializer
 
@@ -17,10 +16,11 @@ class RegisterView(GenericAPIView):
 
         register_user(**serializer.validated_data)
 
-        return Response({
-            "message": "Registered successfully",
-            "status": status.HTTP_201_CREATED
-        }, status=status.HTTP_201_CREATED)
+        return Response(
+            {"message": "Registered successfully", "status": status.HTTP_201_CREATED},
+            status=status.HTTP_201_CREATED,
+        )
+
 
 class LoginView(GenericAPIView):
     serializer_class = LoginSerializer
@@ -32,10 +32,19 @@ class LoginView(GenericAPIView):
         user = login_user(**serializer.validated_data)
 
         if not user:
-            return Response({"error": "Invalid credentials", "status":status.HTTP_401_UNAUTHORIZED}, status=401)
+            return Response(
+                {
+                    "error": "Invalid credentials",
+                    "status": status.HTTP_401_UNAUTHORIZED,
+                },
+                status=401,
+            )
 
-        return Response({
-            "message": "Login successful",
-            "email": user.email,
-            "status": status.HTTP_200_OK
-        }, status=status.HTTP_200_OK)
+        return Response(
+            {
+                "message": "Login successful",
+                "username": user.username,
+                "status": status.HTTP_200_OK,
+            },
+            status=status.HTTP_200_OK,
+        )

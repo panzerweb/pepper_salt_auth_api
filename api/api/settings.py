@@ -119,7 +119,15 @@ SPECTACULAR_SETTINGS = {
 AUTH_USER_MODEL = "accounts.User"
 
 # My custom pepper for now
-PEPPER:str = "n9u2x7v8w3q1r4s5t6y7u8i9o0p1a2s3d4f5g6h7j8k9l0z1x2c3v"
+# PEPPER:str = "n9u2x7v8w3q1r4s5t6y7u8i9o0p1a2s3d4f5g6h7j8k9l0z1x2c3v"
+
+PEPPERS = {
+    1: os.getenv("PEPPER_V1", "n9u2x7v8w3q1r4s5t6y7u8i9o0p1a2s3d4f5g6h7j8k9l0z1x2c3v"),
+    2: os.getenv("PEPPER_V2", "new-super-duper-secret"),
+    3: os.getenv("PEPPER_V2", "newest-super-duper-secret"),
+    4: os.getenv("PEPPER_V2", "super-newest-super-duper-secret"),
+}
+LATEST_PEPPER_VERSION = max(PEPPERS.keys())
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
