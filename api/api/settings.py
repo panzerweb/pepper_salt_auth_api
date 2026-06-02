@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-is&jjp)8-0-!)vqsj)q(m6xsv+jqyk2qa)$j%xjhy*c=d1v38f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "pepper-salt-auth-api-q0pi.onrender.com"]
 
@@ -62,6 +62,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
     "http://localhost:5173",
     "http://localhost:49181",
+    "https://auth-midterm-exam.vercel.app",
 ]
 
 
