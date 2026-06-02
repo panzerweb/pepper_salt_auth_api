@@ -13,8 +13,14 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import os
 
+from dotenv import load_dotenv
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(os.path.join(BASE_DIR, '.env'))
+
+print(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -131,10 +137,10 @@ AUTH_USER_MODEL = "accounts.User"
 # PEPPER:str = "n9u2x7v8w3q1r4s5t6y7u8i9o0p1a2s3d4f5g6h7j8k9l0z1x2c3v"
 
 PEPPERS = {
-    1: os.getenv("PEPPER_V1"),
-    2: os.getenv("PEPPER_V2"),
-    3: os.getenv("PEPPER_V2"),
-    4: os.getenv("PEPPER_V2"),
+    1: os.getenv("PEPPER_V1", "n9u2x7v8w3q1r4s5t6y7u8i9o0p1a2s3d4f5g6h7j8k9l0z1x2c3v"),
+    2: os.getenv("PEPPER_V2", "new-super-duper-secret"),
+    3: os.getenv("PEPPER_V3", "newest-super-duper-secret"),
+    4: os.getenv("PEPPER_V4", "super-newest-super-duper-secret"),
 }
 LATEST_PEPPER_VERSION = max(PEPPERS.keys())
 
